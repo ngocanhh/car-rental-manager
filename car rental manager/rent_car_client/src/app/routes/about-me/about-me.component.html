@@ -1,0 +1,69 @@
+<app-heading [text]="'Profile'"></app-heading>
+<div class="ltk-frame mt-4 pt-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 main-frame">
+        <div class="ltk-avatar">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-2 avatar">
+                <img src="assets/images/lisa.jpg" alt="avatar" class="avatar-img">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12 contact-frame d-none d-sm-block">
+        <div class="col-lg-12 contact-infor">
+          <div class="container">
+            <div class="row">
+              <form [formGroup]="profileForm" class="pl-4 w-100">
+                <h2 class="pb-2"> <i class="fas fa-user pr-2"></i>Personal Information</h2>
+                <div class="depart wheretogo">
+                  <input type="text" placeholder="Full name" formControlName="fullName" name="username"
+                    class="w-100 p-2" required minlength="6">
+                </div>
+                <div class="depart wheretogo pt-3 ">
+                  <input type="text" placeholder="Address" formControlName="address" name="password" class="w-100 p-2"
+                    required minlength="6">
+                </div>
+                <div class="depart wheretogo pt-3 ">
+                  <input type="number" placeholder="ID number" formControlName="idCard" class="w-100 p-2" required
+                    minlength="6">
+                </div>
+                <div class="depart wheretogo pt-3 ">
+                  <input type="email" placeholder="Email" formControlName="email" class="w-100 p-2" required
+                    minlength="6">
+                </div>
+                <div class="depart wheretogo pt-3 ">
+                  <input type="number" placeholder="Phone number" formControlName="phoneNumber" class="w-100 p-2"
+                    required minlength="6">
+                </div>
+                <ng-container>
+                  <div class="form-check pt-3">
+                    <input class="form-check-input" type="radio" formControlName="gender" value="nam"
+                      id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      Male
+                    </label>
+                  </div>
+                  <div class="form-check pt-3">
+                    <input class="form-check-input" type="radio" formControlName="gender" value="nu"
+                      id="flexRadioDefault2" checked>
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      Female
+                    </label>
+                  </div>
+                </ng-container>
+                <div class="submit pt-3 pb-2">
+                  <button (click)="onSave()" class="btn btn-black w-50">
+                    Save
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

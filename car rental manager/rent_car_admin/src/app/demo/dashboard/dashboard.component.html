@@ -1,0 +1,123 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div *ngIf="businessInfo" class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-primary card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">people</i>
+                        </div>
+                        <p class="card-category">Customer</p>
+                        <h3 class="card-title">
+                            {{businessInfo.quantityCustomer}}
+                        </h3>
+                    </div>
+                    <div class="card-footer">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-primary card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">directions_car</i>
+                        </div>
+                        <p class="card-category">Total cars</p>
+                        <h3 class="card-title">
+                            {{businessInfo.totalCars}}
+                        </h3>
+                    </div>
+                    <div class="card-footer">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-primary card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">vpn_key</i>
+                        </div>
+                        <p class="card-category">Renting cars</p>
+                        <h3 class="card-title">
+                            {{businessInfo.rentingCars}}
+                        </h3>
+                    </div>
+                    <div class="card-footer">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-primary card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">price_check</i>
+                        </div>
+                        <p class="card-category">Available cars</p>
+                        <h3 class="card-title">
+                            {{businessInfo.availableCars}}
+                        </h3>
+                    </div>
+                    <div class="card-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-chart">
+                    <div class="card-header card-header-primary">
+                        <div class="ct-chart" id="dailySalesChart"></div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">The number of cars is rent by year</h4>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">access_time</i> at March 3, 2021
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title">Star Customers</h4>
+                        <p class="card-category">New customer on 15th September, 2016</p>
+                    </div>
+                    <div *ngIf="loyalCustomers" class="card-body table-responsive">
+                        <table class="table table-hover">
+                            <thead class="text-primary">
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Gender</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let customer of loyalCustomers">
+                                    <td>
+                                        {{customer.id}}
+                                    </td>
+                                    <td>
+                                        {{customer.fullName}}
+                                    </td>
+                                    <td>
+                                        {{customer.email}}
+                                    </td>
+                                    <td>
+                                        {{customer.phoneNumber}}
+                                    </td>
+                                    <td>
+                                        {{customer.gender}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

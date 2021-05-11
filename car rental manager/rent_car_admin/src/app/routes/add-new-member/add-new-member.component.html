@@ -1,0 +1,80 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Add new member</h4>
+                    <p class="card-category">Change or modify level benefits</p>
+                </div>
+                <div class="card-body table-responsive">
+                    <form [formGroup]="newMemberForm">
+                        <div class="add-member">
+                            <div class="card p-4">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput formControlName="fullName" type="text" placeholder="Full name">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput formControlName="email" type="text" placeholder="E-mail">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput formControlName="address" type="text" placeholder="Address">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput formControlName="phoneNumber" type="number"
+                                                placeholder="Phone number">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput formControlName="password" type="password" placeholder="Password">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput formControlName="idCard" type="number" placeholder="Identification">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field class="example-full-width">
+                                            <mat-label>Role</mat-label>
+                                            <mat-select formControlName="roleId">
+                                                <mat-option *ngFor="let rol of role" [value]="rol.id">
+                                                    {{rol.name}}</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field class="example-full-width">
+                                            <mat-label>Gender</mat-label>
+                                            <mat-select formControlName="gender">
+                                                <mat-option *ngFor="let gen of gender" [value]="gen.value">
+                                                    {{gen.name}}</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <div class="row w-100">
+                        <div class="col-12 text-right">
+                            <button (click)="onSave()" class="btn btn-primary w-50">
+                                Save
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

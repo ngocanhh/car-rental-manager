@@ -1,0 +1,52 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Add new car's brand</h4>
+                    <p class="card-category">Change or modify car's logo</p>
+                </div>
+                <div class="card-body table-responsive">
+                    <form [formGroup]="brandForm">
+                        <div class="add-member">
+                            <div class="card p-4">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput formControlName="id" type="text" placeholder="ID" readonly>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput formControlName="name" type="text"
+                                                placeholder="Brand name">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput formControlName="logo" type="text" placeholder="Logo">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput formControlName="nation" type="text" placeholder="Nation">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <div class="row w-100">
+                        <div class="col-12 text-right">
+                            <button (click)="onSave()" class="btn btn-primary w-50">
+                                Save
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

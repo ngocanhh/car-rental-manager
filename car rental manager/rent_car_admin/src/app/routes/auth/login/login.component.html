@@ -1,0 +1,33 @@
+<div class="login d-flex rounded-lg overflow-hidden">
+    <div class="col-6 p-0 position-relative">
+        <img src="assets/img/cover.jpeg" alt="" class="w-100">
+        <div class="d-flex flex-column justify-content-center position-absolute w-100 h-100 content">
+            <h1>SIGN IN</h1>
+            <p>
+                Login to manage your app!
+            </p>
+        </div>
+    </div>
+    <div class="col-6 p-0 bg-white">
+        <div class="logo text-center">
+            <img [src]="logo" class="w-50 mt-4 pt-4" alt="logo">
+        </div>
+        <form class="p-5 d-flex flex-column justify-content-center mb-0" [formGroup]="loginForm"
+            (ngSubmit)="onSubmit()">
+            <div class="">
+                <mat-form-field class="example-full-width">
+                    <input matInput formControlName="email" type="text" placeholder="Username">
+                </mat-form-field>
+            </div>
+            <div class="">
+                <mat-form-field class="example-full-width">
+                    <input matInput formControlName="password" type="password" placeholder="Password">
+                </mat-form-field>
+            </div>
+            <button class="btn btn-primary w-100" type="submit">LOGIN</button>
+        </form>
+        <p class="text-center font-weight-bold">
+            2021 © Lucien Roux Designer Co, Ltd
+                </p>
+    </div>
+</div>

@@ -1,0 +1,80 @@
+<app-heading [text]="cardDetail?.name"></app-heading>
+<div class="container ltk-detail">
+  <div class="row h-100">
+    <div class="col-12">
+      <div class="car-img">
+        <img class="w-100 h-100" [src]="cardDetail?.image" alt="#">
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h1 class="ltk-detail-title mt-4">
+              {{cardDetail?.name}}
+            </h1>
+          </div>
+          <div class="col-6 ltk-detail-link my-2">
+            Plate No.
+            <strong>
+              {{cardDetail?.carNumberPlate}}
+            </strong>
+          </div>
+          <div class="col-6 ltk-detail-link my-2">
+            Rent cost:
+            <strong>
+              {{cardDetail?.rentCost}} VND
+            </strong>
+          </div>
+          <div class="col-6 ltk-detail-link my-2">
+            Status:
+            <strong>
+              {{cardDetail?.statusName}}
+            </strong>
+          </div>
+          <div class="col-6 ltk-detail-link my-2">
+            Post date:
+            <strong>
+              {{cardDetail?.postDated | date: 'mediumDate'}}
+            </strong>
+          </div>
+          <div class="col-6 ltk-detail-link my-2">
+            Owner:
+            <strong>
+              {{cardDetail?.ownerName}}
+            </strong>
+          </div>
+          <div class="col-6 ltk-detail-link my-2">
+            Brand:
+            <strong>
+              {{cardDetail?.brandName}}
+            </strong>
+          </div>
+          <div class="col-6 ltk-detail-link my-2">
+            Location:
+            <strong>
+              {{cardDetail?.location}}
+            </strong>
+          </div>
+          <div class="col-6 ltk-detail-link my-2">
+            Fuel:
+            <strong>
+              {{cardDetail?.fuel}}
+            </strong>
+          </div>
+          <div class="col-6 ltk-detail-link my-2">
+            Contact no:
+            <strong>
+              {{cardDetail?.contactNumber}}
+            </strong>
+          </div>
+          <div class="col-12 text-right">
+            <button [routerLink]="['/booking', id]" routerLinkActive="router-link-active" class="btn btn-info w-50">
+              Rent now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

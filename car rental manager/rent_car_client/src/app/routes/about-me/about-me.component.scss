@@ -1,0 +1,167 @@
+@import "src/assets/scss/variables";
+
+.ltk-about-me-headline {
+  padding-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .ltk-about-me-headline {
+    padding-top: 60px;
+  }
+}
+
+.ltk-banner {
+  height: 100vh;
+  position: relative;
+  color: white;
+  background: no-repeat center center;
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(32, 32, 32, 0.6);
+  }
+
+  .ltk-banner-shadow {
+    background: url("/assets/images/work.jpg") no-repeat;
+  }
+}
+
+.ltk-frame {
+  .main-frame,
+  .contact-frame {
+    background: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .skill-frame {
+    padding: 15px;
+    border-radius: 20px;
+    background: transparent;
+    border: solid 1px white;
+  }
+
+  .experience-frame,
+  .edu-frame,
+  .hobbie-frame {
+    border-radius: 20px;
+    background: transparent;
+  }
+
+  .hobbie-frame,
+  .edu-frame {
+    padding: 20px;
+  }
+
+  .avatar-img {
+    width: 100%;
+    border-radius: 50%;
+  }
+
+  .first-name,
+  .last-name {
+    font-weight: bold;
+    font-size: 2.5em;
+  }
+
+  .btn-job-infor {
+    background: black;
+    font-weight: bold;
+    border-radius: 35px;
+
+    &:active,
+    &:focus {
+      box-shadow: none;
+      outline: none;
+    }
+  }
+
+  .fa-rocket {
+    color: black !important;
+  }
+
+  .btn-skill {
+    width: 60px;
+    background: white;
+    padding: 13px;
+    border-radius: 50%;
+  }
+
+  .btn-skill-2 {
+    width: 60px;
+    background: white;
+    font-size: 29px;
+    border-radius: 50%;
+  }
+
+  .btn-exp {
+    font-size: 12px;
+    transform: rotate(-90deg);
+    position: relative;
+    top: 35px;
+    background: $blue;
+    border-radius: 25px;
+    color: white;
+    font-weight: bold;
+
+    &:active,
+    &:focus {
+      box-shadow: none;
+      outline: none;
+    }
+  }
+
+  .btn-edu {
+    font-size: 12px;
+    background: $blue;
+    width: 120px;
+    border-radius: 25px;
+    color: white;
+    font-weight: bold;
+
+    &:active,
+    &:focus {
+      box-shadow: none;
+      outline: none;
+    }
+  }
+
+  .contact-icon {
+    font-size: 30px;
+    color: white;
+  }
+
+  .hobbie-icon {
+    color: $blue;
+    font-size: 60px;
+  }
+
+  .exp-mg,
+  .skill-mg {
+    padding: 20px;
+  }
+
+  .exp-title,
+  .edu-title,
+  .hobbie-title {
+    font-weight: bold;
+    color: white;
+  }
+
+  .exp-job {
+    color: white;
+    span {
+      color: black !important;
+    }
+  }
+
+  .exp-infor {
+    border-bottom: solid 1px #cccccc;
+  }
+}

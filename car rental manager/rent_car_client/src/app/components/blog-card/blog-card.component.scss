@@ -1,0 +1,48 @@
+.ltk-blog-card {
+  .card {
+    border: none !important;
+    box-shadow: 2px 3px 50px -29px #52b19b !important;
+  }
+
+  .card-body {
+    background: #ffffff;
+    position: absolute;
+    width: 90%;
+    bottom: -95px;
+    height: 170px;
+
+    h4 {
+      color: #52b19b;
+    }
+
+    p {
+      color: #343434;
+    }
+
+    .ltk-time {
+      color: #343434;
+      font-weight: bold;
+    }
+
+    .ltk-more {
+      display: none;
+      color: #288670;
+      font-weight: bold;
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+
+  img {
+    height: 200px;
+  }
+
+  .content-text-line-clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+}

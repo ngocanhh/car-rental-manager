@@ -1,0 +1,74 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{title}}</h4>
+</div>
+<div class="modal-body">
+  <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+    <div class="d-flex flex-wrap shadow-sm rounded">
+      <div class="col-6">
+        <div class="order-id form-group">
+          <label for="id">Id</label>
+          <input type="text" disabled id="id" formControlName="id">
+        </div>
+        <div class="order-plate form-group">
+          <label for="plate">Plate no.</label>
+          <input type="text" id="plate" formControlName="carNumberPlate">
+          <div *ngIf="!addForm.controls.carNumberPlate.valid && error" class="text-danger">
+            {{error}}
+          </div>
+        </div>
+        <div class="order-location form-group">
+          <label for="location">Location</label>
+          <input type="text" id="location" formControlName="location">
+          <div *ngIf="!addForm.controls.location.valid && error" class="text-danger">
+            {{error}}
+          </div>
+        </div>
+        <div class="order-image form-group">
+          <label for="image">Image</label>
+          <input type="text" id="image" formControlName="image">
+          <div *ngIf="!addForm.controls.image.valid && error" class="text-danger">
+            {{error}}
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="order-name form-group">
+          <label for="name">Name</label>
+          <input type="text" name="" id="name" formControlName="name">
+          <div *ngIf="!addForm.controls.name.valid && error" class="text-danger">
+            {{error}}
+          </div>
+        </div>
+        <div class="order-fuel form-group">
+          <label for="fuel">Fuel</label>
+          <input type="text" id="fuel" formControlName="fuel">
+          <div *ngIf="!addForm.controls.fuel.valid && error" class="text-danger">
+            {{error}}
+          </div>
+        </div>
+        <div class="order-rent form-group">
+          <label for="rent">Rent Cost ($)</label>
+          <input type="text" id="rent" formControlName="rentCost">
+          <div *ngIf="!addForm.controls.rentCost.valid && error" class="text-danger">
+            {{error}}
+          </div>
+        </div>
+        <div class="order-brand form-group">
+          <label for="brand">Brand</label>
+          <select class="form-select form-select-sm" formControlName="brandId" id="brand">
+            <option *ngFor="let item of brands" [value]="item.id">{{item.name}}</option>
+          </select>
+          <div *ngIf="!addForm.controls.brandId.valid && error" class="text-danger">
+            {{error}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-end pt-3">
+      <button type="submit" class="btn btn-primary mr-3">
+        {{submitBtnText}}
+      </button>
+      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+    </div>
+  </form>
+</div>

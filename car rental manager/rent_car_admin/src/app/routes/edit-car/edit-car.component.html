@@ -1,0 +1,78 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Modify car</h4>
+                    <p class="card-category">Change or modify car's logo</p>
+                </div>
+                <div class="card-body table-responsive">
+                    <form [formGroup]="carForm">
+                        <div class="add-member">
+                            <div class="card p-4">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput formControlName="id" type="text" placeholder="ID" readonly>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput formControlName="name" type="text" placeholder="Name">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput formControlName="carNumberPlate" type="text"
+                                                placeholder="Plate no.">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput formControlName="fuel" type="text" placeholder="Fuel">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput formControlName="location" type="text"
+                                                placeholder="Location">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput formControlName="rentCost" type="number"
+                                                placeholder="Rent cost ($)">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput formControlName="image" type="text" placeholder="Image">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field class="example-full-width">
+                                            <mat-label>Brand</mat-label>
+                                            <mat-select formControlName="brandId">
+                                                <mat-option *ngFor="let brand of brands" [value]="brand.id">
+                                                    {{brand.name}}</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <div class="row w-100">
+                        <div class="col-12 text-right">
+                            <button (click)="confirm()" class="btn btn-primary w-50">
+                                Save
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+<app-heading [text]="'Orders'"></app-heading>
+<div class="container booking p-4 rounded">
+  <button class="btn btn-primary" (click)="addNewOrder()">
+    Add
+  </button>
+  <div class="row">
+    <div class="col-md-12 order-md-1">
+      <h4 class="mb-3">Your order list</h4>
+      <table *ngIf="cars" class="table table-hover">
+        <thead class="text-primary">
+          <th>No.</th>
+          <th>Name</th>
+          <th>Plate no.</th>
+          <th>Brand</th>
+          <th>Owner</th>
+          <th>Location</th>
+          <th>Rent cost</th>
+          <th>Status</th>
+          <th>Action</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let car of cars">
+            <td>
+              {{car.id}}
+            </td>
+            <td>
+              {{car.name}}
+            </td>
+            <td>
+              {{car.carNumberPlate}}
+            </td>
+            <td>
+              {{car.brandName}}
+            </td>
+            <td>
+              {{car.ownerName}}
+            </td>
+            <td>
+              {{car.location}}
+            </td>
+            <td>
+              {{car.rentCost}}
+            </td>
+            <td>
+              {{car.status}}
+            </td>
+            <td>
+              <div>
+                <button class="btn btn-info mr-1" (click)="editOrder(car)">
+                  <i class="far fa-edit"></i>
+                </button>
+                <button class="btn btn-danger" (click)="deleteOrder(car.id)">
+                  <i class="far fa-trash-alt"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

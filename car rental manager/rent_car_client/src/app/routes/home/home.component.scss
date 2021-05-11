@@ -1,0 +1,128 @@
+@import "src/assets/scss/variables";
+
+.ltk-home {
+  position: relative;
+  height: 100vh;
+}
+
+.ltk-ss {
+  width: 100%;
+}
+
+.ltk-text {
+  color: white;
+}
+
+.ltk-icon {
+  font-size: 100px;
+  color: $blue;
+
+  &:focus,
+  &:active,
+  &:hover {
+    transition-duration: 0.2s;
+    color: white !important;
+  }
+}
+
+.ltk-ct-icon {
+  font-size: 50px;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .txt-animante {
+    padding-top: 110px;
+  }
+
+  .ltk-ss {
+    width: 90%;
+  }
+}
+
+.btn-ltk {
+  background: transparent !important;
+  border: none;
+
+  &:focus,
+  &:active,
+  &:hover {
+    transition-duration: 0.2s;
+    background: white !important;
+    box-shadow: 13px 13px 50px -24px $blue !important;
+
+    .ltk-ct-icon {
+      color: $blue !important;
+    }
+  }
+}
+
+.brand-img {
+  width: 100px;
+  display: inline;
+}
+
+.ltk-why {
+  h1 {
+    color: #fff;
+  }
+}
+
+.ltk-friendly {
+  h1 {
+    color: white;
+  }
+}
+
+.ltk-sologan {
+  h1 {
+    color: white;
+  }
+}
+
+.ltk-why-choose {
+  .card {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    color: white;
+    height: 290px;
+
+    &:hover {
+      transition-duration: 0.2s;
+      color: white;
+      background: black;
+      box-shadow: 13px 13px 50px -24px $blue;
+
+      .ltk-why-icon {
+        color: white;
+      }
+    }
+  }
+
+  button {
+    background: transparent;
+    border: none;
+
+    &:focus,
+    &:active,
+    &:hover {
+      transition-duration: 0.2s;
+      background: none !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+  }
+
+  .ltk-why-icon {
+    color: white;
+    font-size: 60px;
+  }
+}
+
+
+.bg-bl {
+  background: black;
+  padding: 0 10px;
+  border-radius: 3px;
+}

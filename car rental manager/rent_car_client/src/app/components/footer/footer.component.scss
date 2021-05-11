@@ -1,0 +1,61 @@
+@import "src/assets/scss/variables";
+
+footer {
+  padding-top: 100px;
+
+  .wooden {
+    position: relative;
+    width: 100%;
+  }
+
+  input {
+    padding: 10px;
+    width: 35%;
+    border: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow: 2px 3px 50px -29px #52b19b !important;
+  }
+
+  .btn-news {
+    background: #52b19b;
+    color: white;
+    position: relative;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    padding-left: 30px;
+    padding-right: 30px;
+    top: -2px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+
+  .bg-bl {
+    background: rgba(32, 32, 32, 0.6) !important;
+  }
+
+  .bg-bl-2 {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background: rgba(32, 32, 32, 0.6) !important;
+  }
+
+  .btn-ltk-footer {
+    background: transparent !important;
+    border: none;
+    color: white;
+
+    i {
+      font-size: 35px;
+    }
+
+    &:focus,
+    &:active,
+    &:hover {
+      transition-duration: 0.2s;
+      background: $blue !important;
+      border: none !important;
+      box-shadow: 13px 13px 50px -24px $blue !important;
+    }
+  }
+}

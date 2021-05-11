@@ -1,0 +1,51 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Car Brand Management</h4>
+                    <p class="card-category">Manage car's logo</p>
+                </div>
+                <div class="card-body table-responsive">
+                    <table *ngIf="brands" class="table table-hover">
+                        <thead class="text-primary">
+                            <th>No.</th>
+                            <th>Name</th>
+                            <th>Nation</th>
+                            <th>Logo</th>
+                            <th></th>
+                            <th></th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let brand of brands">
+                                <td>
+                                    {{brand.id}}
+                                </td>
+                                <td>
+                                    {{brand.name}}
+                                </td>
+                                <td>
+                                    {{brand.nation}}
+                                </td>
+                                <td>
+                                    <img [src]="brand.logo" alt="logo">
+                                </td>
+                                <td>
+                                    <i (click)="confirmDelete(brand.id)" class="material-icons cursor-pointer">delete</i>
+                                </td>
+                                <td>
+                                    <i (click)="editBrand(brand.id)" class="material-icons cursor-pointer">create</i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer">
+                    <button [routerLink]="['/add-new-brand']" routerLinkActive="router-link-active"  class="btn btn-primary">
+                        Add new brand
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+.auth-bg {
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay {
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.5);
+}

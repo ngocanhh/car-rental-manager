@@ -1,0 +1,28 @@
+@import "src/assets/scss/variables";
+@import url("https://fonts.googleapis.com/css?family=Dancing+Script&display=swap");
+
+
+@media (max-width: 768px) {
+  .ltk-about-me-headline {
+    margin-top: -5px;
+  }
+
+  h2 {
+    font-size: 3.5rem !important;
+  }
+}
+
+.ltk-porfolio {
+  padding-top: 50px;
+}
+
+.ltk-banner {
+  height: 100vh;
+  position: relative;
+  color: white;
+  background: no-repeat center center;
+
+  .text-heading {
+    font-family: "Dancing Script", cursive !important;
+  }
+}

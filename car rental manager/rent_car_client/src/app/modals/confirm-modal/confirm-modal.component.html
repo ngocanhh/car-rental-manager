@@ -1,0 +1,13 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{data.title}}</h4>
+</div>
+<div class="modal-body">
+  <p>{{data.content}}</p>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary" (click)="activeModal.dismiss('cancel click')">Cancel</button>
+  <button type="button" class="btn"
+    [class.btn-danger]="data.isDanger"
+    [class.btn-primary]="!data.isDanger"
+    (click)="activeModal.close(true)">Ok</button>
+</div>
