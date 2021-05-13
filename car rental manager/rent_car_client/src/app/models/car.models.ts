@@ -2,7 +2,7 @@ export class Car {
     id: number;
     ownerId: number;
     name: string;
-    statusId: number;
+    numberOfSeat: number;
     carNumberPlate: string;
     rentCost: number;
     postDated: string;
@@ -12,6 +12,5 @@ export class Car {
     ownerName: string;
     brandName: string;
     fuel: string;
-    statusName: string;
     contactNumber: string;
 }

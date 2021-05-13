@@ -21,27 +21,9 @@
             </strong>
           </div>
           <div class="col-6 ltk-detail-link my-2">
-            Rent cost:
+            Location:
             <strong>
-              {{cardDetail?.rentCost}} VND
-            </strong>
-          </div>
-          <div class="col-6 ltk-detail-link my-2">
-            Status:
-            <strong>
-              {{cardDetail?.statusName}}
-            </strong>
-          </div>
-          <div class="col-6 ltk-detail-link my-2">
-            Post date:
-            <strong>
-              {{cardDetail?.postDated | date: 'mediumDate'}}
-            </strong>
-          </div>
-          <div class="col-6 ltk-detail-link my-2">
-            Owner:
-            <strong>
-              {{cardDetail?.ownerName}}
+              {{cardDetail?.location}}
             </strong>
           </div>
           <div class="col-6 ltk-detail-link my-2">
@@ -51,9 +33,9 @@
             </strong>
           </div>
           <div class="col-6 ltk-detail-link my-2">
-            Location:
+            Owner:
             <strong>
-              {{cardDetail?.location}}
+              {{cardDetail?.ownerName}}
             </strong>
           </div>
           <div class="col-6 ltk-detail-link my-2">
@@ -66,6 +48,18 @@
             Contact no:
             <strong>
               {{cardDetail?.contactNumber}}
+            </strong>
+          </div>
+          <div class="col-6 ltk-detail-link my-2">
+            Rent cost:
+            <strong>
+              {{cardDetail?.rentCost}} VND
+            </strong>
+          </div>
+          <div class="col-6 ltk-detail-link my-2">
+            Post date:
+            <strong>
+              {{cardDetail?.postDated | date: 'mediumDate'}}
             </strong>
           </div>
           <div class="col-12 text-right">

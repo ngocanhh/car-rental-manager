@@ -31,6 +31,7 @@ export class AddOrderComponent implements OnInit {
   ) {
     this.addForm = new FormGroup({
       id: new FormControl(null),
+      numberOfSeat: new FormControl(null, Validators.required),
       carNumberPlate: new FormControl(null, Validators.required),
       location: new FormControl(null, Validators.required),
       image: new FormControl(null, Validators.required),

@@ -11,6 +11,7 @@
             <th scope="col">Route</th>
             <th scope="col">Start date</th>
             <th scope="col">End date</th>
+            <th scope="col">Total cost (VND)</th>
             <th scope="col">Status</th>
           </tr>
         </thead>
@@ -30,6 +31,9 @@
             </td>
             <td>
               {{item.endDate | date: 'mediumDate'}}
+            </td>
+            <td>
+              {{item.totalCost}}
             </td>
             <td>
               {{item.status}}

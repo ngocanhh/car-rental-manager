@@ -9,13 +9,13 @@
       <table *ngIf="cars" class="table table-hover">
         <thead class="text-primary">
           <th>No.</th>
+          <th>Brand</th>
           <th>Name</th>
           <th>Plate no.</th>
-          <th>Brand</th>
-          <th>Owner</th>
+          <th>Fuel</th>
+          <th>Number of seats</th>
           <th>Location</th>
           <th>Rent cost</th>
-          <th>Status</th>
           <th>Action</th>
         </thead>
         <tbody>
@@ -24,25 +24,25 @@
               {{car.id}}
             </td>
             <td>
+              {{car.brandName}}
+            </td>
+            <td>
               {{car.name}}
             </td>
             <td>
               {{car.carNumberPlate}}
             </td>
             <td>
-              {{car.brandName}}
+              {{car.fuel}}
             </td>
             <td>
-              {{car.ownerName}}
+              {{car.numberOfSeat}}
             </td>
             <td>
               {{car.location}}
             </td>
             <td>
               {{car.rentCost}}
-            </td>
-            <td>
-              {{car.status}}
             </td>
             <td>
               <div>

@@ -5,16 +5,16 @@
   <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
     <div class="d-flex flex-wrap shadow-sm rounded">
       <div class="col-6">
-        <div class="order-id form-group">
-          <label for="id">Id</label>
-          <input type="text" disabled id="id" formControlName="id">
-        </div>
         <div class="order-plate form-group">
           <label for="plate">Plate no.</label>
           <input type="text" id="plate" formControlName="carNumberPlate">
           <div *ngIf="!addForm.controls.carNumberPlate.valid && error" class="text-danger">
             {{error}}
           </div>
+        </div>
+        <div class="order-id form-group">
+          <label for="id">Number Of Seats</label>
+          <input type="number" formControlName="numberOfSeat">
         </div>
         <div class="order-location form-group">
           <label for="location">Location</label>
@@ -47,7 +47,7 @@
           </div>
         </div>
         <div class="order-rent form-group">
-          <label for="rent">Rent Cost ($)</label>
+          <label for="rent">Rent Cost (VND)</label>
           <input type="text" id="rent" formControlName="rentCost">
           <div *ngIf="!addForm.controls.rentCost.valid && error" class="text-danger">
             {{error}}
