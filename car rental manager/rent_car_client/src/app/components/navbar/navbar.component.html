@@ -1,91 +1,137 @@
 <div class="ltk-navbar d-none d-sm-block">
-    <nav class="navbar navbar-expand-lg navbar-dark py-0" id="ltk-nav" [class.scrolled]="scrolled"
-        [class.awake]="awake">
-        <a class="navbar-brand ml-3" [routerLink]="['/']">
-            <!-- <h1 class="text-blue font-weight-bold">LUCIEN ROUX</h1> -->
-            <img style="width: 170px;" src="assets/logo/las.png" alt="footer logo">
-        </a>
-        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
-            aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation"></button>
-        <div class="collapse navbar-collapse" id="collapsibleNavId">
-            <ul [class.navdisplay]="display" class="navbar-nav ml-auto mt-2 mt-lg-0 mr-4" id="hiddenNav">
-                <li class="nav-item ltk-nav-link">
-                    <a class="nav-link p-0" [routerLink]="['/']">
-                        Home
-                    </a>
-                </li>
-                <li class="nav-item ltk-nav-link">
-                    <a class="nav-link p-0" [routerLink]="['/porfolio']">
-                        Vehicle
-                    </a>
-                </li>
-                <li *ngIf="!isAuth" class="nav-item ltk-nav-link">
-                    <a class="nav-link p-0" [routerLink]="['/login']">
-                        Login/Sign-up
-                    </a>
-                </li>
-                <li *ngIf="role == 'ROLE_OWNER'" class="nav-item ltk-nav-link">
-                    <a class="nav-link p-0" [routerLink]="['/cars']">
-                        My Cars
-                    </a>
-                </li>
-                <li class="nav-item ltk-nav-link">
-                    <a class="nav-link p-0" [routerLink]="['/contracts']">
-                        My Contracts
-                    </a>
-                </li>
-                <li *ngIf="isAuth" class="nav-item ltk-nav-link">
-                    <a class="nav-link p-0" [routerLink]="['/about-me']">
-                        {{username}}
-                    </a>
-                </li>
-                <li *ngIf="isAuth" class="nav-item ltk-nav-link">
-                    <a (click)="onLogout()" class="nav-link p-0">
-                        Logout
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+  <nav
+    class="navbar navbar-expand-lg navbar-dark py-0"
+    id="ltk-nav"
+    [class.scrolled]="scrolled"
+    [class.awake]="awake"
+  >
+    <a class="navbar-brand ml-3" [routerLink]="['/']">
+      <!-- <h1 class="text-blue font-weight-bold">LUCIEN ROUX</h1> -->
+      <img style="width: 170px" src="assets/logo/las.png" alt="footer logo" />
+    </a>
+    <button
+      class="navbar-toggler d-lg-none"
+      type="button"
+      data-toggle="collapse"
+      data-target="#collapsibleNavId"
+      aria-controls="collapsibleNavId"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    ></button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+      <ul
+        [class.navdisplay]="display"
+        class="navbar-nav ml-auto mt-2 mt-lg-0 mr-4"
+        id="hiddenNav"
+      >
+        <li class="nav-item ltk-nav-link">
+          <a class="nav-link p-0" [routerLink]="['/']"> Home </a>
+        </li>
+        <li class="nav-item ltk-nav-link">
+          <a class="nav-link p-0" [routerLink]="['/porfolio']"> Vehicle </a>
+        </li>
+        <li *ngIf="!isAuth" class="nav-item ltk-nav-link">
+          <a class="nav-link p-0" [routerLink]="['/login']"> Login/Sign-up </a>
+        </li>
+        <li *ngIf="role == 'ROLE_OWNER'" class="nav-item ltk-nav-link">
+          <a class="nav-link p-0" [routerLink]="['/cars']"> My Cars </a>
+        </li>
+        <li *ngIf="isDisplayContract" class="nav-item ltk-nav-link">
+          <a class="nav-link p-0" [routerLink]="['/contracts']">
+            My Contracts
+          </a>
+        </li>
+        <li *ngIf="isAuth" class="nav-item ltk-nav-link">
+          <a class="nav-link p-0" [routerLink]="['/about-me']">
+            {{ username }}
+          </a>
+        </li>
+        <li *ngIf="isAuth" class="nav-item ltk-nav-link">
+          <a (click)="onLogout()" class="nav-link p-0"> Logout </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 </div>
 
 <div class="ltk-navbar-mobile d-block d-sm-none">
-    <div class="navbar navbar-mb py-0 w-100 position-fixed" [class.scrolled]="scrolled" [class.awake]="awake">
-        <div class="row w-100">
-            <div [class.icon-flow]="stretching" class="col-10 p-0 non-flow">
-                <a class="navbar-brand ml-3" [routerLink]="['/']">
-                    <h1 class="text-white font-weight-bold">
-                        <img style="width: 130px;" src="assets/logo/las.png" alt="footer logo">
-                    </h1>
-                </a>
-            </div>
-            <div (click)="showMobileNav()" [class.icon-flow]="stretching" class="col-2 p-0 non-flow text-right">
-                <i style="font-size: 30px;" class="fas fa-bars pt-3"></i>
-            </div>
-            <div [class.on-stretch]="stretching" class="col-12 position-fixed non-stretch">
-                <ul class="navbar-list-mb list-group ml-auto mt-2 mt-lg-0 mr-4 pr-4 text-right text-uppercase">
-                    <li class="nav-item">
-                        <a (click)="hiddenMobileNav()" class="nav-link" [routerLink]="['/']">
-                            Home
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a (click)="hiddenMobileNav()" class="nav-link" [routerLink]="['/porfolio']">
-                            Porfolio
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a (click)="hiddenMobileNav()" class="nav-link" [routerLink]="['/about-me']">
-                            About
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+  <div
+    class="navbar navbar-mb py-0 w-100 position-fixed"
+    [class.scrolled]="scrolled"
+    [class.awake]="awake"
+  >
+    <div class="row w-100">
+      <div [class.icon-flow]="stretching" class="col-10 p-0 non-flow">
+        <a class="navbar-brand ml-3" [routerLink]="['/']">
+          <h1 class="text-white font-weight-bold">
+            <img
+              style="width: 130px"
+              src="assets/logo/las.png"
+              alt="footer logo"
+            />
+          </h1>
+        </a>
+      </div>
+      <div
+        (click)="showMobileNav()"
+        [class.icon-flow]="stretching"
+        class="col-2 p-0 non-flow text-right"
+      >
+        <i style="font-size: 30px" class="fas fa-bars pt-3"></i>
+      </div>
+      <div
+        [class.on-stretch]="stretching"
+        class="col-12 position-fixed non-stretch"
+      >
+        <ul
+          class="
+            navbar-list-mb
+            list-group
+            ml-auto
+            mt-2 mt-lg-0
+            mr-4
+            pr-4
+            text-right text-uppercase
+          "
+        >
+          <li class="nav-item">
+            <a
+              (click)="hiddenMobileNav()"
+              class="nav-link"
+              [routerLink]="['/']"
+            >
+              Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              (click)="hiddenMobileNav()"
+              class="nav-link"
+              [routerLink]="['/porfolio']"
+            >
+              Porfolio
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              (click)="hiddenMobileNav()"
+              class="nav-link"
+              [routerLink]="['/about-me']"
+            >
+              About
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
+  </div>
 </div>
 
-<div [class.display]="display" (click)="scrollTop()" id="backToTopBtn" title="Go to top">
-    <span>
-        <i class="far fa-arrow-up"></i></span>
+<div
+  [class.display]="display"
+  (click)="scrollTop()"
+  id="backToTopBtn"
+  title="Go to top"
+>
+  <span> <i class="far fa-arrow-up"></i></span>
 </div>
