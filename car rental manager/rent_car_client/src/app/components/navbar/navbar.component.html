@@ -36,7 +36,7 @@
         <li *ngIf="role == 'ROLE_OWNER'" class="nav-item ltk-nav-link">
           <a class="nav-link p-0" [routerLink]="['/cars']"> My Cars </a>
         </li>
-        <li *ngIf="isDisplayContract" class="nav-item ltk-nav-link">
+        <li *ngIf="isAuth" class="nav-item ltk-nav-link">
           <a class="nav-link p-0" [routerLink]="['/contracts']">
             My Contracts
           </a>

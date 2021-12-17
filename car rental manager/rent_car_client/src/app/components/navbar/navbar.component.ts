@@ -24,7 +24,7 @@ export class NavbarComponent implements OnInit {
   public ltkLogo = "assets/logo/las.png";
   username;
   role;
-  public isDisplayContract: boolean;
+  public isDisplayContract = false;
 
   @HostListener("window:scroll", [])
   onWindowScroll() {
@@ -64,19 +64,11 @@ export class NavbarComponent implements OnInit {
     } else {
       this.isAuth = false;
     }
-
-    this.authServ.isDisplay.subscribe((res: any) => {
-      this.isDisplayContract = res;
-    });
   }
 
   onLogout() {
     localStorage.clear();
     this.router.navigate(["/"]);
-    const username = localStorage.getItem("USERNAME");
-    if (username) {
-      this.authServ.isDisplay.next(false);
-    }
     setTimeout(() => {
       location.reload();
     }, 1000);

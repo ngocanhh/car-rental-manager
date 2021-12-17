@@ -29,19 +29,24 @@ export class SignInComponent implements OnInit {
     const req = {
       ...this.loginForm.value,
     };
-    this.authService.login(req).subscribe((res: any) => {
-      if (res) {
-        localStorage.setItem("TOKEN", res.data.access_token);
-        localStorage.setItem("USERNAME", res.data.username);
-        localStorage.setItem("ROLE", res.data.roleName);
-        this.authService.isDisplay.next(true);
-        this.router.navigate(["/"]);
-        window.alert("Login successfully");
-        this.ngbModal.close();
-        setTimeout(() => {
-          location.reload();
-        }, 1000);
-      }
-    });
+
+    this.router.navigate(["/"]);
+    this.authService.isDisplay.next(true);
+    this.ngbModal.close();
+
+    // this.authService.login(req).subscribe((res: any) => {
+    //   if (res) {
+    //     localStorage.setItem("TOKEN", res.data.access_token);
+    //     localStorage.setItem("USERNAME", res.data.username);
+    //     localStorage.setItem("ROLE", res.data.roleName);
+    //     this.authService.isDisplay.next(true);
+    //     this.router.navigate(["/"]);
+    //     window.alert("Login successfully");
+    //     this.ngbModal.close();
+    //     setTimeout(() => {
+    //       location.reload();
+    //     }, 1000);
+    //   }
+    // });
   }
 }
