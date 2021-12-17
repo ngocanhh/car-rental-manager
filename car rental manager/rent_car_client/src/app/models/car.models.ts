@@ -3,7 +3,7 @@ export class Car {
     ownerId: number;
     name: string;
     numberOfSeat: number;
-    carNumberPlate: string;
+    numberPlate: string;
     rentCost: number;
     postDated: string;
     location: string;

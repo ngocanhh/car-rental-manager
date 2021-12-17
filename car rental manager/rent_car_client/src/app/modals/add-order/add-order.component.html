@@ -4,14 +4,40 @@
 <div class="modal-body">
   <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
     <div class="d-flex flex-wrap shadow-sm rounded">
-      <div class="col-6">
+      <div class="col">
+        <div class="w-100 h-100 add-image">
+          <input type="file" (change)="handleFileInput($event.target.files)">
+          <i class="fas fa-plus" *ngIf="!url"></i>
+          <div class="image w-100 h-100" [style.background-image]="'url(' + url + ')'">
+          </div>
+        </div>
+      </div>
+      <div class="col-8">
         <div class="order-plate form-group">
           <label for="plate">Plate no.</label>
-          <input type="text" id="plate" formControlName="carNumberPlate">
-          <div *ngIf="!addForm.controls.carNumberPlate.valid && error" class="text-danger">
+          <input type="text" id="plate" formControlName="numberPlate">
+          <div *ngIf="!addForm.controls.numberPlate.valid && error" class="text-danger">
             {{error}}
           </div>
         </div>
+        <div class="order-name form-group">
+          <label for="name">Name</label>
+          <input type="text" name="" id="name" formControlName="name">
+          <div *ngIf="!addForm.controls.name.valid && error" class="text-danger">
+            {{error}}
+          </div>
+        </div>
+        <div class="order-brand form-group mb-0">
+          <label for="brand">Brand</label>
+          <select class="form-select form-select-sm" formControlName="brandId" id="brand">
+            <option *ngFor="let item of brands" [value]="item.id">{{item.name}}</option>
+          </select>
+          <div *ngIf="!addForm.controls.brandId.valid && error" class="text-danger">
+            {{error}}
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
         <div class="order-id form-group">
           <label for="id">Number Of Seats</label>
           <input type="number" formControlName="numberOfSeat">
@@ -23,22 +49,8 @@
             {{error}}
           </div>
         </div>
-        <div class="order-image form-group">
-          <label for="image">Image</label>
-          <input type="text" id="image" formControlName="image">
-          <div *ngIf="!addForm.controls.image.valid && error" class="text-danger">
-            {{error}}
-          </div>
-        </div>
       </div>
       <div class="col-6">
-        <div class="order-name form-group">
-          <label for="name">Name</label>
-          <input type="text" name="" id="name" formControlName="name">
-          <div *ngIf="!addForm.controls.name.valid && error" class="text-danger">
-            {{error}}
-          </div>
-        </div>
         <div class="order-fuel form-group">
           <label for="fuel">Fuel</label>
           <input type="text" id="fuel" formControlName="fuel">
@@ -50,15 +62,6 @@
           <label for="rent">Rent Cost (VND)</label>
           <input type="text" id="rent" formControlName="rentCost">
           <div *ngIf="!addForm.controls.rentCost.valid && error" class="text-danger">
-            {{error}}
-          </div>
-        </div>
-        <div class="order-brand form-group">
-          <label for="brand">Brand</label>
-          <select class="form-select form-select-sm" formControlName="brandId" id="brand">
-            <option *ngFor="let item of brands" [value]="item.id">{{item.name}}</option>
-          </select>
-          <div *ngIf="!addForm.controls.brandId.valid && error" class="text-danger">
             {{error}}
           </div>
         </div>

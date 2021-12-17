@@ -18,8 +18,8 @@ export class BrandService extends BaseService {
     return this.get(this.levelEndpoint);
   }
 
-  public updateBrand = (id: number, data: any) => {
-    return this.put(data, `${this.levelEndpoint}`);
+  public updateBrand(id, data: any) {
+    return this.patch(data, `${this.levelEndpoint}/${id}`);
   }
 
   public createBrand(data: any) {
@@ -32,5 +32,9 @@ export class BrandService extends BaseService {
 
   public getBrandById = (id: number) => {
     return this.get(`${this.levelEndpoint}/${id}`);
+  }
+
+  public uploadImage(id, data) {
+    return this.post(data, `${this.levelEndpoint}/${id}`)
   }
 }

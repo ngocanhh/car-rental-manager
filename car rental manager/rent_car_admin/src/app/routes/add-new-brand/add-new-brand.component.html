@@ -11,23 +11,19 @@
                         <div class="add-member">
                             <div class="card p-4">
                                 <div class="row">
-                                    <div class="col-6">
-                                        <mat-form-field class="example-full-width">
-                                            <input matInput formControlName="id" type="text" placeholder="ID" readonly>
-                                        </mat-form-field>
+                                    <div class="col">
+                                        <div class="w-100 h-100 add-image">
+                                            <input type="file" (change)="handleFileInput($event.target.files)">
+                                            <i class="material-icons" *ngIf="!logo">add</i>
+                                            <div class="image w-100 h-100"
+                                                [style.background-image]="'url(' + logo + ')'">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-8">
                                         <mat-form-field class="example-full-width">
-                                            <input matInput formControlName="name" type="text"
-                                                placeholder="Brand name">
+                                            <input matInput formControlName="name" type="text" placeholder="Brand name">
                                         </mat-form-field>
-                                    </div>
-                                    <div class="col-6">
-                                        <mat-form-field class="example-full-width">
-                                            <input matInput formControlName="logo" type="text" placeholder="Logo">
-                                        </mat-form-field>
-                                    </div>
-                                    <div class="col-6">
                                         <mat-form-field class="example-full-width">
                                             <input matInput formControlName="nation" type="text" placeholder="Nation">
                                         </mat-form-field>

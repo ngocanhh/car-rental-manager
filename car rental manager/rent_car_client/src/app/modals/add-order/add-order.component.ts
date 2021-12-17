@@ -16,10 +16,12 @@ export class AddOrderComponent implements OnInit {
   submitBtnText = 'Add';
   title = 'Add new car';
   error;
+  url;
 
   @Input() set data(value) {
     this._data = value;
     this.addForm.patchValue(this._data);
+    this.url = this._data.image;
   }
 
   get isEdit() { return !!this._data; }
@@ -32,9 +34,9 @@ export class AddOrderComponent implements OnInit {
     this.addForm = new FormGroup({
       id: new FormControl(null),
       numberOfSeat: new FormControl(null, Validators.required),
-      carNumberPlate: new FormControl(null, Validators.required),
+      numberPlate: new FormControl(null, Validators.required),
       location: new FormControl(null, Validators.required),
-      image: new FormControl(null, Validators.required),
+      file: new FormControl(null),
       name: new FormControl(null, Validators.required),
       fuel: new FormControl(null, Validators.required),
       rentCost: new FormControl(null, Validators.required),
@@ -43,20 +45,6 @@ export class AddOrderComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.brands = [
-    //   {
-    //     "id": 1,
-    //     "name": "FORD",
-    //     "nation": "USA",
-    //     "logo": "https://lh3.google.com/u/0/d/1IUo7ekQx3SPYbmUixE3uIhtp0cCQZllb=w1919-h903-iv1"
-    //   },
-    //   {
-    //     "id": 2,
-    //     "name": "Honda",
-    //     "nation": "Japan",
-    //     "logo": "https://lh3.google.com/u/0/d/1MqLYWPdjrz0wARMy8nhXWCb7jHYwujc_=w1919-h903-iv1"
-    //   }
-    // ]
     if (this.isEdit) {
       this.submitBtnText = 'Save';
       this.title = 'Edit';
@@ -70,13 +58,47 @@ export class AddOrderComponent implements OnInit {
     this.isEdit ? this.onEdit() : this.onCreate();
   }
 
+  handleFileInput(files: FileList) {
+    console.log(files[0]);
+    if (files.length > 0 && this.validationInput(files[0])) {
+      this.error = null;
+      this.addForm.controls.file.setValue(files[0]);
+      const reader = new FileReader();
+
+      reader.readAsDataURL(files[0]);
+      reader.onload = (event) => {
+        this.url = reader.result;
+      };
+    }
+
+  }
+
+  validationInput(file: File) {
+    return (
+      file.type.includes('image/')
+    );
+  }
+
   onCreate() {
-    delete this.addForm.controls.id;
+    const formData: FormData = new FormData();
+    formData.append('file', this.addForm.controls.file.value);
     if (this.addForm.valid) {
-      console.log(this.addForm.value);
-      this.carService.addNewCar(this.addForm.value).subscribe((res: any) => {
-        if(res.data == 'Ok'){
-          this.activeModal.close(true);
+      let data = {
+        name: this.addForm.controls.name.value,
+        numberOfSeat: this.addForm.controls.numberOfSeat.value,
+        numberPlate: this.addForm.controls.numberPlate.value,
+        rentCost: this.addForm.controls.rentCost.value,
+        location: this.addForm.controls.location.value,
+        brandId: this.addForm.controls.brandId.value,
+        fuel: this.addForm.controls.fuel.value
+      }
+      this.carService.addNewCar(data).subscribe((res: any) => {
+        if (res.status == 'Ok') {
+          this.carService.uploadImage(res.data.id, formData).subscribe((res: any) => {
+            if (res.data == 'Ok') {
+              this.activeModal.close(true);
+            }
+          })
         }
       })
     } else {
@@ -85,10 +107,29 @@ export class AddOrderComponent implements OnInit {
   }
 
   onEdit() {
+    const formData: FormData = new FormData();
+    formData.append('file', this.addForm.controls.file.value);
     if (this.addForm.valid) {
-      this.carService.editCar(this.addForm.value).subscribe((res: any) => {
-        if(res.data == 'Ok'){
-          this.activeModal.close(true);
+      let data = {
+        name: this.addForm.controls.name.value,
+        numberOfSeat: this.addForm.controls.numberOfSeat.value,
+        numberPlate: this.addForm.controls.numberPlate.value,
+        rentCost: this.addForm.controls.rentCost.value,
+        location: this.addForm.controls.location.value,
+        brandId: this.addForm.controls.brandId.value,
+        fuel: this.addForm.controls.fuel.value
+      }
+      this.carService.editCar(this.addForm.controls.id.value, data).subscribe((res: any) => {
+        if (res.status == 'Ok') {
+          if (this.addForm.controls.file.value) {
+            this.carService.uploadImage(res.data.id, formData).subscribe((res: any) => {
+              if (res.data == 'Ok') {
+                this.activeModal.close(true);
+              }
+            })
+          } else {
+            this.activeModal.close(true);
+          }
         }
       })
     } else {

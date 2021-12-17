@@ -14,6 +14,7 @@ export class EditBrandComponent implements OnInit {
 
   brandForm: FormGroup;
   id: any;
+  logo;
 
   constructor(
     private brandService: BrandService,
@@ -22,10 +23,10 @@ export class EditBrandComponent implements OnInit {
     private dialog: MatDialog
   ) {
     this.brandForm = new FormGroup({
-      id: new FormControl({ value: null }),
+      id: new FormControl(null),
       name: new FormControl(null),
-      logo: new FormControl(null),
-      nation: new FormControl(null),
+      file: new FormControl(null),
+      nation: new FormControl(null)
     });
   }
 
@@ -33,7 +34,6 @@ export class EditBrandComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.id = +params['id'];
       this.getInfo();
-      console.log(this.id);
     });
   }
 
@@ -42,18 +42,48 @@ export class EditBrandComponent implements OnInit {
       this.brandForm.patchValue({
         ...res.data
       })
+      this.logo = res.data.logo;
     })
   }
 
   onSave(): void {
-    const req = {
-      ...this.brandForm.value
+    const formData: FormData = new FormData();
+    formData.append('file', this.brandForm.controls.file.value);
+    let data = {
+      nation: this.brandForm.controls.nation.value,
+      name: this.brandForm.controls.name.value
     }
-    console.log(req);
-    this.brandService.updateBrand(this.id, req).subscribe((res: any) => {
-      console.log(res);
-      this.router.navigate(['/brand'])
+    this.brandService.updateBrand(this.brandForm.controls.id.value ,data).subscribe((res: any) => {
+      if (res.status == 'Ok') {
+        if (this.brandForm.controls.file.value) {
+          this.brandService.uploadImage(res.data.id, formData).subscribe((res: any) => {
+            if (res.status == 'Ok') {
+              this.router.navigate(['/brand'])
+            }
+          })
+        } else {
+          this.router.navigate(['/brand'])
+        }
+      }
     });
+  }
+
+  handleFileInput(files: FileList) {
+    if (files.length > 0 && this.validationInput(files[0])) {
+      this.brandForm.controls.file.setValue(files[0]);
+      const reader = new FileReader();
+
+      reader.readAsDataURL(files[0]);
+      reader.onload = (event) => {
+        this.logo = event.target.result;
+      };
+    }
+  }
+
+  validationInput(file: File) {
+    return (
+      file.type.includes('image/')
+    );
   }
 
   confirm() {

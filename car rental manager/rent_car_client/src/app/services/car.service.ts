@@ -34,14 +34,18 @@ export class CarService extends BaseService {
   }
 
   addNewCar(body) {
-    return this.post(body, `${this.carEndpoint}/post`)
+    return this.post(body, `${this.carEndpoint}`)
   }
 
-  editCar(body) {
-    return this.put(body, `${this.carEndpoint}/edit`)
+  editCar(id, body) {
+    return this.patch(body, `${this.carEndpoint}/${id}`)
   }
 
   deleteCar(id) {
     return this.delete(`${this.carEndpoint}/remove/${id}`)
+  }
+
+  uploadImage(id, data) {
+    return this.post(data, `${this.carEndpoint}/${id}`)
   }
 }

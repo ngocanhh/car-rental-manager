@@ -16,6 +16,7 @@ export class EditCarComponent implements OnInit {
   carForm: FormGroup;
   brands;
   id: any;
+  logo;
 
   constructor(
     private brandService: BrandService,
@@ -33,6 +34,8 @@ export class EditCarComponent implements OnInit {
       rentCost: new FormControl(null),
       image: new FormControl(null),
       fuel: new FormControl(null),
+      numberOfSeat: new FormControl(null),
+      file: new FormControl(null)
     });
   }
 
@@ -46,12 +49,29 @@ export class EditCarComponent implements OnInit {
   }
 
   onSave() {
-    const req = {
-      ...this.carForm.value
+    const formData: FormData = new FormData();
+    formData.append('file', this.carForm.controls.file.value);
+    let data = {
+      name: this.carForm.controls.name.value,
+      numberOfSeat: this.carForm.controls.numberOfSeat.value,
+      carNumberPlate: this.carForm.controls.carNumberPlate.value,
+      rentCost: this.carForm.controls.rentCost.value,
+      location: this.carForm.controls.location.value,
+      brandId: this.carForm.controls.brandId.value,
+      fuel: this.carForm.controls.fuel.value
     }
-    this.carService.updateCar(this.id, req).subscribe((res: any) => {
-      console.log(res);
-      this.router.navigate(['/car'])
+    this.carService.updateCar(this.carForm.controls.id.value, data).subscribe((res: any) => {
+      if (res.status == 'Ok') {
+        if (this.carForm.controls.file.value) {
+          this.carService.uploadImage(res.data.id, formData).subscribe((res: any) => {
+            if (res.data == 'Ok') {
+              this.router.navigate(['/car'])
+            }
+          })
+        } else {
+          this.router.navigate(['/car'])
+        }
+      }
     })
   }
 
@@ -66,7 +86,26 @@ export class EditCarComponent implements OnInit {
       this.carForm.patchValue({
         ...res.data
       })
+      this.logo = res.data.image;
     })
+  }
+
+  handleFileInput(files: FileList) {
+    if (files.length > 0 && this.validationInput(files[0])) {
+      this.carForm.controls.file.setValue(files[0]);
+      const reader = new FileReader();
+
+      reader.readAsDataURL(files[0]);
+      reader.onload = (event) => {
+        this.logo = event.target.result;
+      };
+    }
+  }
+
+  validationInput(file: File) {
+    return (
+      file.type.includes('image/')
+    );
   }
 
   confirm() {
