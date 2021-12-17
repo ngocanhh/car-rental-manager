@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { HostListener, PLATFORM_ID, Inject } from "@angular/core";
 import { isPlatformBrowser } from "@angular/common";
 import { Router } from "@angular/router";
+import { AuthService } from "src/app/services/auth.service";
 
 @Component({
   selector: "app-navbar",
@@ -11,7 +12,8 @@ import { Router } from "@angular/router";
 export class NavbarComponent implements OnInit {
   constructor(
     @Inject(PLATFORM_ID) public platformId: string,
-    private router: Router
+    private router: Router,
+    private authServ: AuthService
   ) {}
 
   public scrolled = false;
@@ -62,13 +64,19 @@ export class NavbarComponent implements OnInit {
     } else {
       this.isAuth = false;
     }
+
+    this.authServ.isDisplay.subscribe((res: any) => {
+      this.isDisplayContract = res;
+    });
   }
 
   onLogout() {
     localStorage.clear();
     this.router.navigate(["/"]);
     const username = localStorage.getItem("USERNAME");
-    this.isDisplayContract = username ? true : false;
+    if (username) {
+      this.authServ.isDisplay.next(false);
+    }
     setTimeout(() => {
       location.reload();
     }, 1000);
